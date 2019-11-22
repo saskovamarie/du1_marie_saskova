@@ -22,16 +22,16 @@ if polomer == (0):
 else:
     R = polomer
 
-def polednik (zem_delka,meritko):
-    # funkce fce_poledniky vypočte poledníky pro každé zobrazení, protože vzorec pro výpočet poledníků daných zobrazení je stejný a vloží je do seznamu poledniky
-    # pokud vyjde vzdálenost větší než 1 m program vypíše "-"
+def polednik (zem_delka,meritko,R):
+    # funkce fce_poledniky vypočte poledníky pro každé zobrazení, protože vzorec pro výpočet poledníků daných zobrazení je stejný
+    # vrací hodnotu v cm, pokud vyjde vzdálenost větší než 1 m program vypíše "-"
    x = (R*radians(zem_delka)*cos(radians(0)))/meritko * 100000
    x_z = round(x,1)
    if (x_z > -100) and (x_z < 100):
        return x_z
    else:
        return "-"
-def lambertovo_rovnobezka (zem_sirka,meritko):
+def lambertovo_rovnobezka (zem_sirka,meritko,R):
    # vypočte rovnoběžky pro Lambertovo zobrazení dle zadané zeměpisné šířky a měřítka
    # vrátí hodnotu v cm nebo -
    y = (R * sin(radians(zem_sirka))) / meritko * 100000
@@ -40,7 +40,7 @@ def lambertovo_rovnobezka (zem_sirka,meritko):
        return y_z
    else:
        return "-"
-def marinovo_rovnobezka (zem_sirka,meritko):
+def marinovo_rovnobezka (zem_sirka,meritko,R):
    # vypočte rovnoběžky pro Marinovo zobrazení dle zadané zeměpisné šířky a měřítka
    # vrátí hodnotu v cm nebo -
    y = (R * radians(zem_sirka)) / meritko * 1000000
@@ -49,7 +49,7 @@ def marinovo_rovnobezka (zem_sirka,meritko):
        return y_z
    else:
        return "-"
-def braunovo_rovnobezka (zem_sirka,meritko):
+def braunovo_rovnobezka (zem_sirka,meritko,R):
    # vypočte rovnoběžky pro Braunovo zobrazení dle zadané zeměpisné šířky a měřítka
    # vrátí hodnotu v cm nebo -
    y = (2 * R * tan(radians(zem_sirka / 2))) / meritko * 1000000
@@ -58,7 +58,7 @@ def braunovo_rovnobezka (zem_sirka,meritko):
        return y_z
    else:
        return "-"
-def mercatorovo_rovnobezka (zem_sirka,meritko):
+def mercatorovo_rovnobezka (zem_sirka,meritko,R):
    # vypočte rovnoběžky pro Mercatorovo zobrazení dle zadané zeměpisné šířky a měřítka
    # vrátí hodnotu v cm nebo -
    y = (R * log(1 / tan(radians((90 - zem_sirka) / 2)))) / meritko * 1000000
@@ -71,40 +71,40 @@ def mercatorovo_rovnobezka (zem_sirka,meritko):
 def lambertovo(poledniky,rovnobezky):
    # funkce lambert vypočítá poledníky a rovnoběžky pro lambertovo zobrazení a vloží je do seznamů
    for zem_delka in range(-180, 190, 10):
-       x = polednik(zem_delka,meritko)
+       x = polednik(zem_delka,meritko,R)
        poledniky.append(x)
    for zem_sirka in range(-90, 100, 10):
-       y = lambertovo_rovnobezka(zem_sirka,meritko)
+       y = lambertovo_rovnobezka(zem_sirka,meritko,R)
        rovnobezky.append(y)
 
 def marinovo(poledniky,rovnobezky):
    # funkce marinovo vypočítá poledníky a rovnoběžky pro marinovo zobrazení a vloží je do seznamů
    for zem_delka in range(-180, 190, 10):
-       x = polednik(zem_delka,meritko)
+       x = polednik(zem_delka,meritko,R)
        poledniky.append(x)
    for zem_sirka in range(-90, 100, 10):
-       y = marinovo_rovnobezka(zem_sirka,meritko)
+       y = marinovo_rovnobezka(zem_sirka,meritko,R)
        rovnobezky.append(y)
 
 def braunovo(poledniky,rovnobezky):
-   # funkce braunovo vypočítá poledníky a rovnoběžky pro braunovo zobrazení a vložíí je do seznamu
+   # funkce braunovo vypočítá poledníky a rovnoběžky pro braunovo zobrazení a vloží je do seznamu
    for zem_delka in range(-180, 190, 10):
-       x = polednik(zem_delka, meritko)
+       x = polednik(zem_delka, meritko,R)
        poledniky.append(x)
    for zem_sirka in range(-90, 100, 10):
-       y = braunovo_rovnobezka(zem_sirka, meritko)
+       y = braunovo_rovnobezka(zem_sirka,meritko,R)
        rovnobezky.append(y)
 
 def mercatorovo(poledniky,rovnobezky):
    # funkce mercator vypočítá poledníky a rovnoběžky pro mercatorovo zobrazení a vloží je do seznamu
    for zem_delka in range(-180, 190, 10):
-       x = polednik(zem_delka,meritko)
+       x = polednik(zem_delka,meritko,R)
        poledniky.append(x)
    for zem_sirka in range(-90, 100, 10):
-       if zem_sirka == (90):
+       if (zem_sirka == -90) or (zem_sirka == 90):
            rovnobezky.append("-")
        else:
-           y = mercatorovo_rovnobezka(zem_sirka,meritko)
+           y = mercatorovo_rovnobezka(zem_sirka,meritko,R)
            rovnobezky.append(y)
 
 poledniky = []
@@ -131,7 +131,7 @@ if (zem_delka < -180) or (zem_delka > 180):
    quit()
 else:
    zem_sirka = float(input("zadejte zeměpisnou šířku:"))
-   if (zem_sirka <-90.0) or (zem_sirka > 90.0):
+   if (zem_sirka < -90.0) or (zem_sirka > 90.0):
        print("Neplatný vstup.")
        quit()
    else:
@@ -141,25 +141,24 @@ else:
 # hodnoty zaokrouhlí na desetiny centimetrů, vypíše a zeptá se znovu, dokud uživatel nezadá 0,0
 while bod != [0,0]:
    if zobrazeni == "L":
-       x = polednik(zem_delka, meritko)
-       y = lambertovo_rovnobezka(zem_sirka, meritko)
+       x = polednik(zem_delka, meritko,R)
+       y = lambertovo_rovnobezka(zem_sirka, meritko,R)
 
    elif zobrazeni == "A":
-       x = polednik(zem_delka, meritko)
-       y = marinovo_rovnobezka(zem_sirka, meritko)
+       x = polednik(zem_delka, meritko,R)
+       y = marinovo_rovnobezka(zem_sirka, meritko,R)
 
    elif zobrazeni == "B":
-       x = polednik(zem_delka, meritko)
-       y = braunovo_rovnobezka(zem_sirka, meritko)
+       x = polednik(zem_delka, meritko,R)
+       y = braunovo_rovnobezka(zem_sirka, meritko,R)
 
    elif zobrazeni == "M":
        if (zem_sirka == -90) or (zem_sirka == 90):
-           x = polednik(zem_delka, meritko)
-           print("přepočtená zeměpisná délka bodu:",x)
-           print("přepočtená zeměpisná šířka bodu:-")
+           x = polednik(zem_delka, meritko,R)
+           y = "-"
        else:
-           x = polednik(zem_delka, meritko)
-           y = mercatorovo_rovnobezka(zem_sirka, meritko)
+           x = polednik(zem_delka, meritko,R)
+           y = mercatorovo_rovnobezka(zem_sirka, meritko,R)
 
    print("přepočtená zeměpisná délka bodu:", x)
    print("přepočtená zeměpisná šířka bodu:", y)
@@ -174,3 +173,4 @@ while bod != [0,0]:
            quit()
        else:
            bod = [zem_delka, zem_sirka]
+print("Děkujeme za použití programu!")
