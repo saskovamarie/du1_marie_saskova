@@ -8,7 +8,7 @@ Program se uživatele zeptá na vstupní informace: zobrazení, měřítko a pol
 
 ##### Vstupy:
 
-- uživatel zadá zobrazení - `L` jako Lambertovo,` A` jako Marinovo, `B` jako Braunovo nebo `M` jako Mercatorovo, pokud uživatel zadá například jiné písmeno, je upozorněn a má možnost zadat vstup znovu
+- uživatel zadá zobrazení - `L` jako Lambertovo, `A` jako Marinovo, `B` jako Braunovo nebo `M` jako Mercatorovo, pokud uživatel zadá například jiné písmeno, je upozorněn a má možnost zadat vstup znovu
 
 - dále se program ptá na měřítko, uživatel zadává `x`, kde výsledné měřítko je 1 : x, měřítko musí být větší než 0, pokud uživatel zadá nekorektní vstup,  je upozorněn a má možnost zadat vstup znovu
 
