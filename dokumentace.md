@@ -17,6 +17,8 @@ Program se uživatele zeptá na vstupní informace: zobrazení, měřítko a pol
 - pro zjištění hodnot pro konkrétní bod uživatel zadá zeměpisnou délku a šířku, zeměpisná šířka musí být v rozmezí od -90 do 90 stupňů a zeměpisná délka od -180 do 180 stupňů, pokud uživatel zadá hodnoty `(0,0)` program skončí, pokud zadá nekorektní vstup je upozorněn a program skončí
 
 ##### Použité funkce:
+- *kontrola_delky (a)*
+  funkce zaokrouhlí hodnotu a na jedno desetinné místo a následně zkontroluje délku, pokud je větší nez 100cm vrátí místo hodnoty `-`, pokud je menší vrací zaokrouhlenou hodnotu a 
 
 - *polednik (zem_delka,meritko,R)* 
 
