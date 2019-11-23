@@ -19,7 +19,7 @@ Program se uživatele zeptá na vstupní informace: zobrazení, měřítko a pol
 ##### Použité funkce:
 - *kontrola_delky (a)*
 
-  funkce zaokrouhlí hodnotu a na jedno desetinné místo a následně zkontroluje délku, pokud je větší nez 100cm vrátí místo hodnoty `-`, pokud je menší vrací zaokrouhlenou hodnotu a 
+  funkce zaokrouhlí hodnotu a na jedno desetinné místo a následně zkontroluje délku, pokud je větší než 100cm vrátí místo hodnoty `-`, pokud je menší vrací zaokrouhlenou hodnotu a 
 
 - *polednik (zem_delka,meritko,R)* 
 
