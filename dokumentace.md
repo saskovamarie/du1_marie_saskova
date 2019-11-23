@@ -4,7 +4,7 @@
 
 #### Průběh programu:
 
-Program se uživatele zeptá na vstupní informace: zobrazení, měřítko a poloměr Země. Pokud uživatel zadá nekorektní vstup má možnost zadat informaci opakovaně pomocí while cyklu. Dle zadaných informací program vypíše seznamy hodnot vypočtených vzdáleností na osách pro rovnoběžky a poledníky. Dále má uživatel možnost zadat zeměpisnou délku a zeměpisnou šířku konkrétního bodu a program vypíše přepočtené hodnoty podle zadaného zobrazení. Při zadání hodnot `(0,0)` program skončí. 
+Program se uživatele zeptá na vstupní informace: zobrazení, měřítko a poloměr Země. Program je zaměřen na válcová tečná zobrazení. Pokud uživatel zadá nekorektní vstup má možnost zadat informaci opakovaně pomocí while cyklu. Dle zadaných informací program vypíše seznamy hodnot vypočtených vzdáleností na osách pro rovnoběžky a poledníky. Dále má uživatel možnost zadat zeměpisnou délku a zeměpisnou šířku konkrétního bodu a program vypíše přepočtené hodnoty podle zadaného zobrazení. Při zadání hodnot `(0,0)` program skončí. 
 
 ##### Vstupy:
 
